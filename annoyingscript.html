@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<noscript>
+<img src="./index_art.gif" alt="Cool picture!!!" height="100" width="400"><br>
+<a href="/">/: the homepage of the best worst website in the world</a><br>
+<a href="/interblag">/interblag: the wacky blog of the future, today</a><br>
+<a href="/party">/party: it's always party time here at meme.institute</a><br>
+<a href="/interrobang">/interrobang: the noblest of all punctuation marks</a><br>
+<a href="/blook">/blook: for when you're really not feelin up to it right now, sorry</a><br>
+<a href="/yt">/yt: the youtube channel i think this website was supposed to be for, but i dunno</a><br>
+<a href="/twitter">/twitter: why do we have one of these again</a><br>
+<a href="/gxscc">/gxscc: turn midis into chiptunes</a><br>
+<a href="/swood">/swood: synthesize midis with any sample</a><br>
+<a href="/midieditor">/midieditor: the least bad free midi editor</a><br>
+<a href="/411">/411: you're here, duh</a><br>
+</noscript>
+<script>
+var top_img = document.createElement("img");
+document.body.appendChild(top_img);
+top_img.setAttribute("src", "./index_art.gif?" + btoa(Math.random().toString()).substring(0, 7)); //hacky way of preventing caching clientside
+top_img.setAttribute("alt", "Cool picture!!!");
+top_img.setAttribute("height", "100");
+top_img.setAttribute("width", "400");
+
+var linksDiv = document.createElement("div");
+document.body.appendChild(linksDiv);
+
+linksDiv.innerHTML += document.getElementsByTagName("noscript")[0].innerText.substring(79);
+var links = linksDiv.children;
+var innerTexts = [];
+
+for(i = 0; i < links.length; i+=2) {
+  innerTexts[i] = links[i].innerText;
+  links[i].innerText = "";
+}
+
+function updateLinks() {
+  var charsToAdd = 7;
+  for(i = 0; i < links.length; i+=2) {
+    if(links[i].innerText != innerTexts[i]) {
+      if((innerTexts[i].length - links[i].innerText.length) >= charsToAdd) {
+        links[i].innerText = innerTexts[i].substring(0, links[i].innerText.length + charsToAdd);
+        return;
+      }
+      else { //there will be remaining chars
+        charsToAdd -= (innerTexts[i].length - links[i].innerText.length);
+        links[i].innerText = innerTexts[i];
+      }
+    }
+  }
+  if(charsToAdd > 0) { //leftover chars, we must be done
+    clearInterval(textUpdate);
+  }
+}
+
+setTimeout(function() { window.textUpdate = setInterval(updateLinks, 300) }, 2000);
+
+</script>
