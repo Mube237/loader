@@ -8,7 +8,7 @@
 
     <script>
         "use strict";
-        var WORDS = ["booger", "apple", "hackbright", "mango"];
+        var WORDS = ["mube", "bush", "kashmir", "lol"];
         var randomSize = WORDS.length;
         var scrambleWord = function(word) {
             var letterArray = word.split('');
@@ -33,7 +33,7 @@
             var guess = prompt("What is your guess for "+ scrambledWord +"?", "Enter guess here").toLowerCase().trim();
             // If the user guesses wrong, tell them they were wrong and show the right word.
             var numTries = 1;
-            while (guess !== word && numTries < 5) {
+            while (guess !== word && numTries < 10) {
                 numTries++;
                 guess = prompt("Guess again!  What is your guess for " + scrambledWord + "?", "Guess Here AGAIN");
             } 
